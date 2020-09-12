@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+		body{background-color: #171717}
+        .box {
+            width: 1168px;
+            height: 519px;
+            background: red;
+            margin: 50px auto;
+        }
+
+        .item {
+            width: 119px;
+            height: 519px;
+            float: left;
+        }
+
+        .item:nth-child(1) {
+            background: url("images/feature-1.png") no-repeat 100% 100%;
+            /*background-size: 100% 100%; 背景图尺寸 */
+
+
+        }
+
+        .item:nth-child(2) {
+            background: url("images/feature-2.png")  no-repeat 100% 100%;
+        }
+
+        .item:nth-child(3) {
+            background: url("images/feature-3.png")  no-repeat 100% 100%;
+        }
+
+        .item:nth-child(4) {
+            background: url("images/feature-4.png")  no-repeat 100% 100%;
+        }
+
+        .item:nth-child(5) {
+            background: url("images/feature-5.png")  no-repeat 100% 100%;
+        }
+
+        .big {
+            width: 692px;
+        }
+
+        .big img {
+            display: none;
+            height: 519px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".item").mouseenter(function () {
+                $(this).addClass("big").siblings().removeClass("big");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="item big"><img src="images/01.png" alt=""/></div>
+    <div class="item"><img src="images/02.png" alt=""/></div>
+    <div class="item"><img src="images/03.png" alt=""/></div>
+    <div class="item"><img src="images/04.png" alt=""/></div>
+    <div class="item"><img src="images/05.png" alt=""/></div>
+</div>
+</body>
+</html>
