@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/kefu.js"></script>
+</head>
+<body>
+
+    <!-- 上线后请把这段删除 -->
+    <div>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            dl{
+                padding: 0;
+                padding: 10vw;
+            }
+        </style>
+        <dl>
+            <dt>使用方法</dt>
+            <dd>
+引入js插件：<xmp><script src="./js/kefu.js"></script></xmp>
+            </dd>
+            <dt></dt>
+            <dd>
+<xmp>
+<script>
+var kefu = new Kefu({
+    index: "/",
+    tel: "13888888888",//电话号码
+    qq: "888888",//在线QQ
+    wechatPerson: {
+        state: true,// true是开启个人微信二维码, false不开启
+        imgURL: "./imgs/2wm.png" //图片路径
+    },
+    wechatofficial: {
+        state: true,// true是开启微信公众号二维码, false不开启
+        imgURL: "./imgs/2wm.png" //图片路径
+    }//微信公众号
+});
+</script>
+</xmp>
+            </dd>
+        </dl>
+    </div>
+    <!-- 上线后请把这段删除 -->
+    <script>
+        var kefu = new Kefu({
+            index: "#",
+            tel: "13888888888",//电话号码
+            qq: "888888",//在线QQ
+            wechatPerson: {
+                state: true,// true是开启个人微信二维码, false不开启
+                imgURL: "./imgs/2wm.png"
+            },
+            wechatofficial: {
+                state: true,// true是开启微信公众号二维码, false不开启
+                imgURL: "./imgs/2wm.png"
+            }//微信公众号
+        });
+    </script>
+</body>
+
+</html>
