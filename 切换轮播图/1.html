@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title>jQuery 3D叠加切换轮播代码 - 源码之家</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/zturn.js"></script>
+</head>
+<body>
+   <div class="lb_gl">
+    <div class="container">
+        <div class="pictureSlider poster-main">
+            <div class="poster-btn poster-prev-btn"></div>
+
+
+            <ul id="zturn" class="poster-list">
+                <li class="poster-item  zturn-item" data_n="0" style="position: absolute; left: 50%; margin-left: 36.5556px; z-index: 8; opacity: 0.81; transform: scale(0.81);">
+                    <div class="for_btn">
+                        <img src="images/a1.png" width="100%">
+                        <a href="#" class="in_page"><img src="images/iconin.png"></a>
+                    </div>
+                </li>
+
+                <li class="poster-item zturn-item" data_n="1" style="position: absolute; left: 50%; margin-left: 150.333px; z-index: 7; opacity: 0.729; transform: scale(0.729);">
+                    <div class="for_btn">
+                        <img src="images/a2.png" width="100%">
+                        <a href="#" class="in_page"><img src="images/iconin.png"></a>
+                    </div>
+                </li>
+
+                <li class="poster-item zturn-item" data_n="2" style="position: absolute; left: 50%; margin-left: 264.111px; z-index: 6; opacity: 0.6561; transform: scale(0.6561);">
+                    <div class="for_btn">
+                        <img src="images/a3.png" width="100%">
+                        <a href="#" class="in_page"><img src="images/iconin.png"></a>
+                    </div>
+                </li>
+
+                <li class="poster-item zturn-item" data_n="3" style="position: absolute; left: 50%; margin-left: 377.889px; z-index: 5; opacity: 0.59049; transform: scale(0.59049);">
+                    <div class="for_btn">
+                        <img src="images/a4.png" width="100%">
+                        <a href="#" class="in_page"><img src="images/iconin.png"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                var aa=new zturn({
+                    id:"zturn",
+                    opacity:0.9,
+                    width:382,
+                    Awidth:1024,
+                    scale:0.9
+                })
+</script>
+</body>
+</html>

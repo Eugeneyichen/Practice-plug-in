@@ -1,0 +1,126 @@
+<HTML><HEAD>
+<TITLE>文字交替慢慢出现</TITLE>
+<SCRIPT language=JavaScript>
+growWait=90
+expandWait=120
+scrollWait=100
+scrollWidth=40
+lineMax=4
+lines=new Array(lineMax)
+lines[1]=new Line("李增浩12121212121212121212121", "/", Expand, 2000)
+lines[2]=new Line("李增浩12121212121212121212121", "/", Expand, 2000)
+lines[3]=new Line("李增浩12121212121212121212121", "/", Expand, 2000)
+lines[4]=new Line("李增浩12121212121212121212121", "/", Expand, 2000)
+timerID=null
+timerRunning=false
+spaces=""
+charNo=0
+charMax=0
+charMiddle=0
+lineNo=0
+lineWait=0
+function Line(text, url, type, wait) {
+        this.text=text
+        this.url=url
+        this.Display=type
+        this.wait=wait
+}
+function StringFill(c, n) {
+        s=""
+        while (--n >= 0) {
+                s+=c
+        }
+        return s
+}
+function Static() {
+        document.formDisplay.buttonFace.value=this.text
+        timerID=setTimeout("ShowNextLine()", this.wait)
+}
+function Grow() {
+        lineText=this.text
+        lineWait=this.wait
+        charMax=lineText.length
+        TextGrow()
+}
+function TextGrow() {
+        if (charNo <= charMax) {
+                document.formDisplay.buttonFace.value=lineText.substring(0, charNo)
+                charNo++
+                timerID=setTimeout("TextGrow()", growWait)
+        }
+        else {
+                charNo=0
+                timerID=setTimeout("ShowNextLine()", lineWait)
+        }
+}
+function Expand() {
+        lineText=this.text
+        charMax=lineText.length
+        charMiddle=Math.round(charMax / 2)
+        lineWait=this.wait
+        TextExpand()
+}
+function TextExpand() {
+        if (charNo <= charMiddle) {
+                document.formDisplay.buttonFace.value=lineText.substring(charMiddle - charNo, charMiddle + charNo)
+                charNo++
+                timerID=setTimeout("TextExpand()", expandWait)
+        }
+        else {
+                charNo=0
+                timerID=setTimeout("ShowNextLine()", lineWait)
+        }
+}
+function Scroll() {
+        spaces=StringFill(" ", scrollWidth)
+        lineText=spaces+this.text
+        charMax=lineText.length
+        lineText+=spaces
+        lineWait=this.wait
+        TextScroll()
+}
+function TextScroll() {
+        if (charNo <= charMax) {
+                document.formDisplay.buttonFace.value=lineText.substring(charNo, scrollWidth+charNo)
+                charNo++
+                timerID=setTimeout("TextScroll()", scrollWait)
+        }
+        else {
+                charNo=0
+                timerID=setTimeout("ShowNextLine()", lineWait)
+        }
+}
+function StartHeadliner() {
+        StopHeadliner()
+        timerID=setTimeout("ShowNextLine()", 1000)
+        timerRunning=true
+}
+
+function StopHeadliner() {
+        if (timerRunning) {
+                clearTimeout(timerID)
+                timerRunning=false
+        }
+}
+function ShowNextLine() {
+        (lineNo < lineMax) ? lineNo++ : lineNo=1
+        lines[lineNo].Display()
+}
+
+function GotoUrl(url)
+{
+        top.location.href=url
+}
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#fef4d9 onload=StartHeadliner()>
+<CENTER>文字慢慢出现</CENTER><BR>
+<CENTER>
+<TABLE>
+  <TBODY>
+ <TR>
+    <TD align=middle>
+      <FORM name=formDisplay><INPUT class=stHeadLiner onclick=GotoUrl(lines[lineNo].url) type=button value="** 请稍等片刻**" name=buttonFace>
+  </FORM></TD></TR></TBODY></TABLE></CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,431 @@
+﻿<!doctype html>
+<html>
+<head>
+<body>
+<meta charset="utf-8">
+<title>html5情人节爱心背景特效</title>
+<style>
+body{
+  overflow: hidden;
+  margin: 0;
+}
+
+.div1{
+  position: fixed;
+  top: 54%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translateY(-50%);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 40px;
+  color: #c70012;
+  padding: 0 20px;
+}
+.div2{
+  position: fixed;
+  top: 10%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform:translateY(-50%);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 20px;
+  color: #c70012;
+  padding: 0 20px;
+}
+@media (min-width:1200px){
+  h1{
+    font-size: 60px;
+  }
+}
+</style>
+<canvas></canvas>
+<div class="div1">
+<style type="text/css">
+*{padding:0; margin:0;}
+ul,li{list-style:none;}
+body{font:12px/20px "Microsoft Yahei","SimSun",Arial,sans-serif; background:#ffe;}
+.heartPic{width:749px;height:630px;margin:60px auto 0 auto;}
+.heartPic ul{float:left;width:749px;}
+.heartPic ul li{float:left;width:100px;height:100px;padding:2px;cursor:pointer;}
+.heartPic ul li.on{z-index:99;}
+.heartPic ul li.on .in{position:relative;left:-50px;top:-50px;padding:5px 5px 20px 5px;background:#666;}
+img{opacity: 0.5;}
+.heartPic ul li .pTxt{display:none;width:100px;height:15px;text-align:center;color:#fff;overflow:hidden;}
+.heartPic .showDiv{display:block;}
+</style>
+<div class="heartPic">
+    <ul>
+        <li></li>
+        <li>
+            <div class="in">
+                <img width="100" height="100" src="images/1.png" />
+                <p class="pTxt">可爱的女娃娃</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/2.png" />
+                <p class="pTxt">呆萌的小熊</p>
+            </div>
+        </li>
+    <li></li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/3.png" />
+                <p class="pTxt">卡哇伊的小熊</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/4.png" />
+                <p class="pTxt">女巫骑着扫帚</p>
+            </div>
+        </li>
+    <li></li>
+    </ul>
+    <ul>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/5.png" />
+                <p class="pTxt">女娃娃</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/6.png" />
+                <p class="pTxt">星星可爱</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/1.png" />
+                <p class="pTxt">呆萌女</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/2.png" />
+                <p class="pTxt">狗狗</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/3.png" />
+                <p class="pTxt">绿树</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/4.png" />
+                <p class="pTxt">粉爱粉爱的</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/5.png" />
+                <p class="pTxt">蜡笔小新</p>
+            </div>
+        </li>
+    </ul>
+    <ul>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/6.png" />
+                <p class="pTxt">震不碎的心</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/1.png" />
+                <p class="pTxt">很有意境</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/2.png" />
+                <p class="pTxt">樱木花道最爱啊</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/3.png" />
+                <p class="pTxt">俩骷髅</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/4.png" />
+                <p class="pTxt">萌妹子</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/5.png" />
+                <p class="pTxt">可爱的小狗</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/6.png" />
+                <p class="pTxt">夫妇俩白头偕老</p>
+            </div>
+        </li>
+    </ul>
+    <ul>
+    <li></li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/1.png" />
+                <p class="pTxt">刷子</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/2.png" />
+                <p class="pTxt">偶的头像</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/3.png" />
+                <p class="pTxt">树叶子</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/4.png" />
+                <p class="pTxt">星星</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/5.png" />
+                <p class="pTxt">浅色哦</p>
+            </div>
+        </li>
+    <li></li>
+    </ul>
+    <ul>
+    <li></li>
+    <li></li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/6.png" />
+                <p class="pTxt">太阳帅哥</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/1.png" />
+                <p class="pTxt">大笑脸</p>
+            </div>
+        </li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/2.png" />
+                <p class="pTxt">企鹅</p>
+            </div>
+        </li>
+    <li></li>
+    <li></li>
+    </ul>
+    <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>
+            <div class="in">
+                <img width="100" height="100" src="images/3.png" />
+                <p class="pTxt">小兔子</p>
+            </div>
+        </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+</div>
+</div>
+
+<div class="div2">
+<script LANGUAGE="JavaScript">
+  Begin
+ function calc() {
+
+  first = document.loveform.name1.value.toUpperCase();
+  firstlength = document.loveform.name1.value.length;
+  second = document.loveform.name2.value.toUpperCase();
+  secondlength = document.loveform.name2.value.length;
+  var LoveCount=0;
+
+  for (Count=0; Count < firstlength; Count++) {
+  letter1=first.substring(Count,Count+1);
+  if (letter1=='L') LoveCount+=2;
+  if (letter1=='O') LoveCount+=2;
+  if (letter1=='V') LoveCount+=2;
+  if (letter1=='E') LoveCount+=2;
+  if (letter1=='Y') LoveCount+=3;
+  if (letter1=='O') LoveCount+=1;
+  if (letter1=='U') LoveCount+=3;
+  }
+
+  for (Count=0; Count < secondlength; Count++) {
+  letter2=second.substring(Count,Count+1);
+  if (letter2=='L') LoveCount+=2;
+  if (letter2=='O') LoveCount+=2;
+  if (letter2=='V') LoveCount+=2;
+  if (letter2=='E') LoveCount+=2;
+  if (letter2=='Y') LoveCount+=3;
+  if (letter2=='O') LoveCount+=1;
+  if (letter2=='U') LoveCount+=3;
+  }
+
+  amount=0;
+  if (LoveCount> 0) amount=  5-((firstlength+secondlength)/2)
+  if (LoveCount> 2) amount= 10-((firstlength+secondlength)/2)
+  if (LoveCount> 4) amount= 20-((firstlength+secondlength)/2)
+  if (LoveCount> 6) amount= 30-((firstlength+secondlength)/2)
+  if (LoveCount> 8) amount= 40-((firstlength+secondlength)/2)
+  if (LoveCount>10) amount= 50-((firstlength+secondlength)/2)
+  if (LoveCount>12) amount= 60-((firstlength+secondlength)/2)
+  if (LoveCount>14) amount= 70-((firstlength+secondlength)/2)
+  if (LoveCount>16) amount= 80-((firstlength+secondlength)/2)
+  if (LoveCount>18) amount= 90-((firstlength+secondlength)/2)
+  if (LoveCount>20) amount=100-((firstlength+secondlength)/2)
+  if (LoveCount>22) amount=110-((firstlength+secondlength)/2)
+
+  if (firstlength==0 || secondlength==0) amount= "Err";
+  if (amount < 0) amount= 0;
+  if (amount >99) amount=99;
+
+  document.loveform.output.value=amount+"%";
+  }
+  </script>
+ 计算两人的爱情指数，输入两人名字，点击计算按钮就可以得出结果。本人不承担因此导致的感情破解。
+人名只能用英文或者汉语拼音。
+<br><br>
+  <form name=loveform>
+  <input value="Bill Clinton" name="name1" type="text" size="20"> +
+  <input value="Monica Lewinsky" name="name2" type="text" size="20"> =
+  <input value="" name="output" type="text" size="6">
+ <br>
+  <br>
+  <input value="开始计算!" name="calculate" type="button" value="calculate" onclick="calc()">
+  </form>
+  </div>
+
+<script>
+// 背景
+var canvas = document.querySelector("canvas"),
+  ctx = canvas.getContext("2d");
+
+var ww,wh;
+
+function onResize(){
+  ww = canvas.width = window.innerWidth;
+  wh = canvas.height = window.innerHeight;
+}
+
+ctx.strokeStyle = "red";
+ctx.shadowBlur = 25;
+ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
+
+var precision = 100;
+var hearts = [];
+var mouseMoved = false;
+function onMove(e){
+  mouseMoved = true;
+  if(e.type === "touchmove"){
+    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
+    hearts.push(new Heart(e.touches[0].clientX, e.touches[0].clientY));
+  }
+  else{
+    hearts.push(new Heart(e.clientX, e.clientY));
+    hearts.push(new Heart(e.clientX, e.clientY));
+  }
+}
+
+var Heart = function(x,y){
+  this.x = x || Math.random()*ww;
+  this.y = y || Math.random()*wh;
+  this.size = Math.random()*2 + 1;
+  this.shadowBlur = Math.random() * 10;
+  this.speedX = (Math.random()+0.2-0.6) * 8;
+  this.speedY = (Math.random()+0.2-0.6) * 8;
+  this.speedSize = Math.random()*0.05 + 0.01;
+  this.opacity = 1;
+  this.vertices = [];
+  for (var i = 0; i < precision; i++) {
+    var step = (i / precision - 0.5) * (Math.PI * 2);
+    var vector = {
+      x : (15 * Math.pow(Math.sin(step), 3)),
+      y : -(13 * Math.cos(step) - 5 * Math.cos(2 * step) - 2 * Math.cos(3 * step) - Math.cos(4 * step))
+    }
+    this.vertices.push(vector);
+  }
+}
+
+Heart.prototype.draw = function(){
+  this.size -= this.speedSize;
+  this.x += this.speedX;
+  this.y += this.speedY;
+  ctx.save();
+  ctx.translate(-1000,this.y);
+  ctx.scale(this.size, this.size);
+  ctx.beginPath();
+  for (var i = 0; i < precision; i++) {
+    var vector = this.vertices[i];
+    ctx.lineTo(vector.x, vector.y);
+  }
+  ctx.globalAlpha = this.size;
+  ctx.shadowBlur = Math.round((3 - this.size) * 10);
+  ctx.shadowColor = "hsla(0, 100%, 60%,0.5)";
+  ctx.shadowOffsetX = this.x + 1000;
+  ctx.globalCompositeOperation = "screen"
+  ctx.closePath();
+  ctx.fill()
+  ctx.restore();
+};
+
+
+function render(a){
+  requestAnimationFrame(render);
+
+  hearts.push(new Heart())
+  ctx.clearRect(0,0,ww,wh);
+  for (var i = 0; i < hearts.length; i++) {
+    hearts[i].draw();
+    if(hearts[i].size <= 0){
+      hearts.splice(i,1);
+      i--;
+    }
+  }
+}
+onResize();
+window.addEventListener("mousemove", onMove);
+window.addEventListener("touchmove", onMove);
+window.addEventListener("resize", onResize);
+requestAnimationFrame(render);
+</script>
+
+<script language="javascript">
+  var now=new Date();
+  var hour=now.getHours();
+  if ((hour>5)&&(hour<=7))
+    alert("早上好！");
+  else if ((hour>7)&&(hour<=11))
+    alert("上午好！");
+  else if ((hour>11)&&(hour<=13))
+    alert("中午好！");
+  else if ((hour>13)&&(hour<=17))
+    alert("下午好！");
+  else if ((hour>17)&&(hour<=21))
+    alert("晚上好！");
+  else if ((hour>21)&&(hour<=23))
+    alert("赶紧睡觉！");
+  else alert("等死吧！");
+</script>
+</body>
+</html>
+

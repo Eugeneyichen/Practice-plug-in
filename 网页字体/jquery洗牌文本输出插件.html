@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jquery洗牌文本输出插件shuffleText</title>
+<style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+html {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+a img {
+  border: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+body {
+  background: #FFF;
+  -webkit-font-smoothing: antialiased;
+}
+.inner {
+  width: 750px;
+  height: auto;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 750px) {
+  .inner {
+    width: 100%;
+    padding: 0 40px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+}
+a {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+h1 {
+  padding: 30px 0;
+  margin-bottom: 50px;
+  background: #ff6860;
+  font: 700 20px/20px "proxima-nova", sans-serif;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 1px 0 #ff5047;
+}
+p {
+  margin: 0 auto 100px;
+  font: 400 14px/24px "Helvetica", "Arial", sans-serif;
+  color: #4D4D4D;
+  text-align: center;
+}
+p strong,
+p a {
+  font-weight: bold;
+  color: #ff6860;
+}
+p a {
+  text-decoration: none;
+  border-bottom: 1px solid #E8E8E8;
+}
+div {
+  text-align: center;
+}
+blockquote {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 100px;
+  background: #F8F8F8;
+  font: 700 30px/34px "proxima-nova", sans-serif;
+  color: #ff6860;
+  letter-spacing: 1px;
+  text-align: center;
+}
+@media only screen and (max-width: 500px) {
+  blockquote {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+form {
+  position: relative;
+  width: 400px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+form input[type="text"] {
+  width: 300px;
+  padding: 0 0 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #E9E9E9;
+  font: 400 20px/20px "Helvetica", "Arial", sans-serif;
+  color: #4D4D4D;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+form input[type="submit"] {
+  position: absolute;
+  right: -2px;
+  top: -6px;
+  padding: 12px 15px;
+  background: transparent;
+  border: 2px solid #ff6860;
+  outline: none;
+  font: 700 12px/12px "proxima-nova", sans-serif;
+  color: #ff6860;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+form input[type="submit"]:hover {
+  color: #FFFFFF;
+  background: #ff6860;
+  text-shadow: 0 1px 0 #ff5047;
+}
+@media only screen and (max-width: 500px) {
+  form {
+    width: 100%;
+  }
+  form input[type="text"] {
+    width: 100%;
+  }
+  form input[type="submit"] {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 5px;
+    padding: 12px 0;
+    width: 100%;
+  }
+}
+.button {
+  display: block;
+  max-width: 220px;
+  margin: 0 auto 100px;
+  padding: 15px 0;
+  border: 2px solid #ff6860;
+  font: 700 12px/12px "proxima-nova", sans-serif;
+  color: #ff6860;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.button:hover {
+  color: #FFFFFF;
+  background: #ff6860;
+  text-shadow: 0 1px 0 #ff5047;
+}
+footer p {
+  font-size: 12px;
+}
+footer p span {
+  -webkit-font-smoothing: auto;
+}
+footer p a {
+  font-weight: 400;
+  -webkit-font-smoothing: auto;
+}
+footer p a:hover {
+  color: #4D4D4D;
+}
+</style>
+<script type="text/javascript" src="http://www.codefans.net/ajaxjs/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+(function ($) {
+    var isActive = false;
+    $.fn.shuffleText = function(shuffleResult, options){
+        var $this = $(this);
+        var aChars = new Array("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","k","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+        var defaults = $.extend({
+            frames   : 40,
+            maxSpeed : 1000,
+            amount   : 3,
+            complete : null
+        }, options);
+        if(shuffleResult == undefined)
+            shuffleResult = '';
+        var aToShuffle     = $this.text().split(''),
+            aShuffleResult = shuffleResult.split(''),
+            iFlag = 0, n = 0, duration = 0, iLenght = 0,
+            interval, aLetters;
+        if(!isActive){
+            isActive = true;
+            return $this.each(function(){
+                replaceEntry();
+                aLetters = $this.find('span');
+                if(defaults.amount < 0)
+                    defaults.amount = 0;
+                if((iLength * (defaults.amount + 1) * defaults.frames) > defaults.maxSpeed){
+                    duration = defaults.maxSpeed / (iLength * (defaults.amount + 1));
+                }else{
+                    duration = defaults.frames;
+                }
+                randomChars();
+                interval = setInterval(randomChars,Math.floor(duration));
+                function replaceEntry(){
+                    $this.empty();
+                    if(aToShuffle.length > aShuffleResult.length)
+                        iLength = aToShuffle.length;
+                    else
+                        iLength = aShuffleResult.length;
+                    for(i = 0; i < iLength; i++){
+                        if(aToShuffle[i] == undefined)
+                            $this.append($('<span></span>'));
+                        else
+                            $this.append($('<span>'+aToShuffle[i]+'</span>'));
+                    }
+                }
+                function randomChars(){
+                    var randomChars = aChars[Math.floor(Math.random() * aChars.length)];
+                    if(iFlag >= iLength){
+                        isActive = false;
+                        $this.text(shuffleResult);
+                        clearInterval(interval);
+                        if(typeof defaults.complete == 'function')
+                            defaults.complete.call($this);
+                    }else{
+                        if(n == defaults.amount){
+                            if(iFlag >= aShuffleResult.length)
+                                $(aLetters[iFlag]).text('');
+                            else
+                                $(aLetters[iFlag]).text(aShuffleResult[iFlag]);
+                            iFlag++; n = 0;
+                        }else{
+                            $(aLetters[iFlag]).text(randomChars);
+                            n++;
+                        }
+                    }
+                }
+            });
+        }
+    };
+}(jQuery));
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+   var target  = $('blockquote');
+   $('form').submit(function(e){
+       e.preventDefault();
+       target.shuffleText($('#entry').val());
+   });
+});
+</script>
+</head>
+<body>
+<h1>jquery洗牌文本输出插件</h1>
+<div class="inner">
+  <div>
+                <form method="post" action="">
+                    <input type="text" id="entry" placeholder="在这里输入文字..." autofocus />
+                    <input type="submit" value="点击这里" />
+                </form>
+                <blockquote>输出结果演示</blockquote>
+            </div>
+</div>
+</body>
+</html>
