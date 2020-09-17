@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head> 
+<meta charset="utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<title>Fish Animation</title> 
+<meta name="Title" content="Fish Animation" /> 
+<meta name="description" content="Fish Animation is a jQuery plugin that transform a HTML5 canvas element into configurable fish animation using CreateJS library." />
+<meta name="keywords" content="fish, animation, plugin, canvas, swim, swimming, water, turn, sea, pool, koi" /> 
+
+<link rel="stylesheet" href="css/jquery-ui.css" /> 
+
+<link rel="stylesheet" href="css/style.css" /> 
+
+</head> 
+<body> 
+
+  <div id="mainHolder"> 
+   <div class="contentWrapper"> 
+    <div class="header">
+     鱼群动画
+    </div>
+    <div class="desc">
+     鱼群动画是一个jquery插件，它使用createjs库将html5画布元素转换为可配置的fish动画。
+    </div>
+    <div id="settingHolder" class="ignorePadding"> 
+     <div class="column"> 
+      <div class="row">
+        游泳速度 : 
+       <span id="swimspeedNum">5</span> 
+       <div id="swimspeed" class="slider"></div>
+      </div>
+      <div class="row">
+        减速 : 
+       <span id="downspeedNum">0.98</span> 
+       <div id="downspeed" class="slider"></div>
+      </div>
+      <div class="row">
+        弧度 : 
+       <span id="rounderNum">10</span> 
+       <div id="rounder" class="slider"></div>
+      </div>
+      <div class="row">
+       转动频率 : 
+       <span id="turningNum">3</span> 
+       <div id="turning" class="slider"></div>
+      </div>
+     </div>
+     <div class="column"> 
+      <div class="row">
+        鱼的数量 : 
+       <span id="numberFishNum">25</span> 
+       <div id="numberFish" class="slider"></div>
+      </div>
+      <div class="row">
+        鱼大小 : 
+       <span id="scaleRangeNum">3</span> 
+       <div id="scaleRange" class="slider"></div>
+      </div>
+      <div class="row">
+        游泳周期 : 
+       <span id="swimTimerNum">50</span> 
+       <div id="swimTimer" class="slider"></div>
+      </div>
+      <div class="row">
+        颜色 : 
+       <input id="colour" value="#000000" /> 
+      </div>
+     </div>
+     <div class="columnBig"> 
+      <button id="reset" class="">Reset</button> 
+     </div>
+     <div style="clear:both;"></div>
+    </div>
+   </div>
+  </div>
+  
+  <div id="canvasHolder"> 
+   <canvas id="fishHolder" width="800" height="500"></canvas> 
+  </div>
+  
+  <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+  <script src="https://www.jq22.com/jquery/jquery-ui-1.11.0.js"></script>
+  <script src="js/jqColorPicker.min.js"></script> 
+  <script src="js/createjs-2015.11.26.min.js"></script> 
+  <script src="js/fish-animation.js"></script> 
+  <script>
+	  $(function() {
+		$('#fishHolder').fishAnimation();
+		$(window).resize(function() {
+			resizeFunc();
+		});
+		resizeFunc();
+		buildSettings();
+	});
+	function buildSettings() {
+		$("#numberFish").slider({
+			range: "max",
+			max: 100,
+			min: 1,
+			value: 25,
+			slide: function(event, ui) {
+				$("span#numberFishNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'number', ui.value);
+			}
+		});
+		$("#swimspeed").slider({
+			range: "max",
+			max: 30,
+			min: 1,
+			value: 5,
+			slide: function(event, ui) {
+				$("span#swimspeedNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'swimspeed', ui.value);
+			}
+		});
+		$("#downspeed").slider({
+			range: "max",
+			max: 1,
+			min: .9,
+			value: .98,
+			step: 0.01,
+			slide: function(event, ui) {
+				$("span#downspeedNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'downspeed', ui.value);
+			}
+		});
+		$("#rounder").slider({
+			range: "max",
+			max: 50,
+			min: 5,
+			value: 10,
+			slide: function(event, ui) {
+				$("span#rounderNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'rounder', ui.value);
+			}
+		});
+		$("#turning").slider({
+			range: "max",
+			max: 15,
+			min: 0,
+			value: 3,
+			slide: function(event, ui) {
+				$("span#turningNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'turning', ui.value);
+			}
+		});
+		$("#scaleRange").slider({
+			range: "max",
+			max: 5,
+			min: 1,
+			value: 3,
+			step: 0.1,
+			slide: function(event, ui) {
+				$("span#scaleRangeNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'scaleRange', ui.value);
+			}
+		});
+		$("#swimTimer").slider({
+			range: "max",
+			max: 300,
+			min: 10,
+			value: 50,
+			slide: function(event, ui) {
+				$("span#swimTimerNum").html(ui.value);
+				$('#fishHolder').fishAnimation('update', 'swimTimer', ui.value);
+			}
+		});
+		$('#colour').colorPicker({
+			renderCallback: function($elm) {
+				$('#colour').val(this.color.colors.HEX);
+				$('#fishHolder').fishAnimation('update', 'colour', '#' + this.color.colors.HEX);
+			}
+		});
+		$('#reset').click(function() {
+			$("#swimspeed").slider("value", 5);
+			$("#swimspeedNum").html(5);
+			$("#downspeed").slider("value", 0.98);
+			$("#downspeedNum").html(0.98);
+			$("#rounder").slider("value", 10);
+			$("#rounderNum").html(10);
+			$("#turning").slider("value", 3);
+			$("#turningNum").html(3);
+			$("#numberFish").slider("value", 25);
+			$("#numberFishNum").html(25);
+			$("#scaleRange").slider("value", 3);
+			$("#scaleRangeNum").html(3);
+			$("#swimTimer").slider("value", 50);
+			$("#swimTimerNum").html(50);
+			$('#fishHolder').fishAnimation();
+		});
+	}
+	function resizeFunc() {
+		windowW = $(window).width();
+		windowH = $(window).height();
+		var gameCanvas = document.getElementById("fishHolder");
+		gameCanvas.width = windowW;
+		gameCanvas.height = windowH;
+		$('#mainHolder').css('width', windowW);
+		$('#mainHolder').css('height', windowH);
+		$('#fishHolder').fishAnimation('update', 'canvasW', windowW);
+		$('#fishHolder').fishAnimation('update', 'canvasH', windowH);
+	}
+	</script> 
+
+ </body>
+</html>
